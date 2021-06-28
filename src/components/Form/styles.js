@@ -14,11 +14,6 @@ export default makeStyles((theme) => ({
     flexWrap: "wrap",
     justifyContent: "center",
   },
-  heading6: {
-    background: "-webkit-linear-gradient(360deg, #00dbde 10%, #fc00ff 70%, #00dbde 90%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent"
-  },
   fileInput: {
     width: "97%",
     margin: "10px 0",
@@ -27,15 +22,15 @@ export default makeStyles((theme) => ({
     marginBottom: 10,
   },
   btn1: {
-    backgroundImage: "linear-gradient(to right, #00f260, #0575e6);",
+    backgroundImage: "linear-gradient(to right, #8e2de2, #4a00e0)",
     "&:hover": {
-      backgroundImage: "linear-gradient(to right, #00c3ff, #ffff1c);",
+      backgroundImage: "linear-gradient(to right, #4a00e0, #8e2de2)",
     }
   },
   btn2: {
-    backgroundImage: "linear-gradient(to right, #fc00ff, #00dbde);",
+    backgroundImage: "linear-gradient(to right, #f50057, #ab003d);",
     "&:hover": {
-      backgroundImage: "linear-gradient(to right, #00dbde, #fc00ff);",
+      backgroundImage: "linear-gradient(to right, #ab003d, #f50057);",
     }
   },
 }));
