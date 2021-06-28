@@ -23,14 +23,18 @@ const Form = ({ currentId, setCurrentId }) => {
     if (post) setPostData(post);
   }, [post]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (currentId) {
-      dispatch(updatePost(currentId, postData));
-    } else {
+
+    if (currentId === 0) {
       dispatch(createPost(postData));
+      clear();
+    } else {
+      dispatch(updatePost(currentId, postData));
+      clear();
     }
   };
+  
   const clear = () => {
     setCurrentId(null);
     setPostData({
@@ -49,7 +53,7 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} Your Tech Blog</Typography>
+        <Typography className={classes.heading6} variant="h6">{currentId ? 'Editing' : 'Creating'} Your Tech Blog</Typography>
         <TextField
           name="creator"
           variant="outlined"
@@ -84,7 +88,7 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Tags"
           fullWidth
           value={postData.tags}
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
+          onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })}
         />
         <div className={classes.fileInput}>
           <FileBase
@@ -96,7 +100,7 @@ const Form = ({ currentId, setCurrentId }) => {
           />
         </div>
         <Button
-          className={classes.buttonSubmit}
+          className={`${classes.buttonSubmit} ${classes.btn1}`}
           variant="contained"
           color="primary"
           size="large"
@@ -106,6 +110,7 @@ const Form = ({ currentId, setCurrentId }) => {
           Submit
         </Button>
         <Button
+          className={`${classes.buttonSubmit} ${classes.btn2}`}
           variant="contained"
           color="secondary"
           size="small"
